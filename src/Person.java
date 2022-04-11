@@ -1,30 +1,27 @@
+import java.util.ArrayList;
 
 public class Person {
-	String Name;
-	int Id;
-	String Email;
-	String P_no;
-	int Demerit;
+	ArrayList<String> Name= new ArrayList<>();
+	ArrayList<Integer> Id= new ArrayList<>();
+	ArrayList<String> Email= new ArrayList<>();
+	ArrayList<String> P_no= new ArrayList<>();
+	ArrayList<Integer> Demerit= new ArrayList<>();
 	
 	public Person() {
 		
 	}
 	
 	public Person(String name, int id) {
-		this.Name=name;
-		this.Id=id;
+		Name.add(name);
+		Id.add(id);
 	}
 	
-	public Person(String name, int id, String email, String p_no) {
-		this.Name=name;
-		this.Id=id;
-		this.Email=email;
-		this.P_no=p_no;
-		this.Demerit=0;
-	}
-	
-	public void printinfo() {
-		System.out.println("Name:"+Name+" Id:"+Id+" Email:"+Email+" P_no:"+P_no+" Demerit:"+Demerit);
+	public Person(String name, int id, String email, String p_no,int demerit) {
+		Name.add(name);
+		Id.add(id);
+		Email.add(email);
+		P_no.add(p_no);
+		Demerit.add(demerit);
 	}
 
 }
