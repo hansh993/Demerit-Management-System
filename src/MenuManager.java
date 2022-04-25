@@ -13,7 +13,7 @@ public class MenuManager {
 			System.out.println("1. Add Person");
 			System.out.println("2. Delete Person");
 			System.out.println("3. Deduct Points");
-			System.out.println("4. View Demerit");
+			System.out.println("4. View Demerits");
 			System.out.println("5. Exit");
 			System.out.print("Select one number between 1-5:");
 			num=input.nextInt();
@@ -28,7 +28,7 @@ public class MenuManager {
 				personmanager.deductPoints();
 				break;
 			case 4:
-				personmanager.viewDemerit();
+				personmanager.viewDemerits();
 				break;
 			}	
 			
