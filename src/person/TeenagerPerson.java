@@ -3,6 +3,9 @@ package person;
 import java.util.Scanner;
 
 public class TeenagerPerson extends Person {
+	public TeenagerPerson(PersonKind kind) {
+		this.Kind=kind;
+	}
 	public void getUserInput(Scanner input) {
 		System.out.print("Person's Id:");
 		int Id=input.nextInt();

@@ -2,7 +2,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import person.Children;
 import person.Person;
+import person.PersonKind;
 import person.TeenagerPerson;
 
 public class PersonManager {
@@ -15,19 +17,26 @@ public class PersonManager {
 	public void addPerson() {
 		int kind=0;
 		Person person;
-		while(kind!=1&&kind!=2) {
-			System.out.print("1 for Adult");
-			System.out.print("2 for Teenager");
-			System.out.print("Select num for People Kind between 1 and 2:");
+		while(kind!=1&&kind!=2&&kind!=3) {
+			System.out.println("1 for Adult");
+			System.out.println("2 for Teenager");
+			System.out.println("3 for Children");
+			System.out.print("Select num for People Kind between 1 and 3:");
 			kind=input.nextInt();
 			if(kind==1) {
-				person=new Person();
+				person=new Person(PersonKind.Adult);
 				person.getUserInput(input);
 				people.add(person);
 				break;
 			}
 			else if(kind==2) {
-				person=new TeenagerPerson();
+				person=new TeenagerPerson(PersonKind.Teenager);
+				person.getUserInput(input);
+				people.add(person);
+				break;
+			}
+			else if(kind==3) {
+				person=new Children(PersonKind.Children);
 				person.getUserInput(input);
 				people.add(person);
 				break;

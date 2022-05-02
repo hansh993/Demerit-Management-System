@@ -14,12 +14,25 @@ public class Person {
 		
 	}
 	
+    public Person(PersonKind kind) {
+		this.Kind=kind;
+	}
+	
 	public Person(String name, int id) {
 		this.Name=name;
 		this.Id=id;
 	}
 	
 	public Person(String name, int id, String email, String p_no, int demerit) {
+		this.Name=name;
+		this.Id=id;
+		this.Email=email;
+		this.P_no=p_no;
+		this.Demerit=demerit;
+	}
+	
+	public Person(PersonKind kind, String name, int id, String email, String p_no, int demerit) {
+		this.Kind=kind;
 		this.Name=name;
 		this.Id=id;
 		this.Email=email;
@@ -68,7 +81,20 @@ public class Person {
 	}
 	
 	public void printInfo() {
-		System.out.println("Name:"+Name+" Id:"+Id+" Email:"+Email+" P_no:"+P_no+" Demerits:"+Demerit);
+		String skind="none";
+		switch(this.Kind) {
+		case Adult:
+			skind="Adult";
+			break;
+		case Teenager:
+			skind="Teen";
+			break;
+		case Children:
+			skind="Child";
+			break;
+		default:
+		}
+		System.out.println("Kind:"+skind+" Name:"+Name+" Id:"+Id+" Email:"+Email+" P_no:"+P_no+" Demerits:"+Demerit);
 	}
 	
 	public void getUserInput(Scanner input) {
