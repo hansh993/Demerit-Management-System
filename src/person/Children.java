@@ -2,7 +2,7 @@ package person;
 
 import java.util.Scanner;
 
-public class Children extends Person {
+public class Children extends Person implements PersonInput {
 	
 	protected String parentEmail;
 	protected String parentP_no;
@@ -78,7 +78,7 @@ public class Children extends Person {
 			}
 		}
 		
-		this.Demerit=-1;
+		this.setDemerit(-1);
 		
 	}
 	

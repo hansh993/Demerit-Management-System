@@ -2,13 +2,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import person.Adult;
 import person.Children;
-import person.Person;
+import person.PersonInput;
 import person.PersonKind;
 import person.TeenagerPerson;
 
 public class PersonManager {
-	ArrayList<Person> people= new ArrayList<Person>();
+	ArrayList<PersonInput> people= new ArrayList<PersonInput>();
 	Scanner input;
 	PersonManager(Scanner input){
 		this.input=input;
@@ -16,7 +17,7 @@ public class PersonManager {
 	
 	public void addPerson() {
 		int kind=0;
-		Person person;
+		PersonInput personInput;
 		while(kind!=1&&kind!=2&&kind!=3) {
 			System.out.println("1 for Adult");
 			System.out.println("2 for Teenager");
@@ -24,21 +25,21 @@ public class PersonManager {
 			System.out.print("Select num for People Kind between 1 and 3:");
 			kind=input.nextInt();
 			if(kind==1) {
-				person=new Person(PersonKind.Adult);
-				person.getUserInput(input);
-				people.add(person);
+				personInput=new Adult(PersonKind.Adult);
+				personInput.getUserInput(input);
+				people.add(personInput);
 				break;
 			}
 			else if(kind==2) {
-				person=new TeenagerPerson(PersonKind.Teenager);
-				person.getUserInput(input);
-				people.add(person);
+				personInput=new TeenagerPerson(PersonKind.Teenager);
+				personInput.getUserInput(input);
+				people.add(personInput);
 				break;
 			}
 			else if(kind==3) {
-				person=new Children(PersonKind.Children);
-				person.getUserInput(input);
-				people.add(person);
+				personInput=new Children(PersonKind.Children);
+				personInput.getUserInput(input);
+				people.add(personInput);
 				break;
 			}
 			else {
@@ -69,9 +70,9 @@ public class PersonManager {
     	System.out.print("Person's Id:");
 		int personId=input.nextInt();
 		for(int i=0;i<people.size();i++) {
-			Person person=people.get(i);
-			if(person.getId()==personId) {
-				person.Demerit--;
+			PersonInput personInput=people.get(i);
+			if(personInput.getId()==personId) {
+				personInput.setDemerit(personInput.getDemerit()-1);
 				System.out.println("Point is deducted");
 			}
 		}

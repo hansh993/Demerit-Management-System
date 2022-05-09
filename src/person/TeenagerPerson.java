@@ -2,7 +2,7 @@ package person;
 
 import java.util.Scanner;
 
-public class TeenagerPerson extends Person {
+public class TeenagerPerson extends Person implements PersonInput {
 	public TeenagerPerson(PersonKind kind) {
 		this.Kind=kind;
 	}
@@ -37,8 +37,24 @@ public class TeenagerPerson extends Person {
 			}
 		}
 		
-		this.Demerit=-1;
+		this.setDemerit(-1);
 		
+	}
+	public void printInfo() {
+		String skind="none";
+		switch(this.Kind) {
+		case Adult:
+			skind="Adult";
+			break;
+		case Teenager:
+			skind="Teen";
+			break;
+		case Children:
+			skind="Child";
+			break;
+		default:
+		}
+		System.out.println("Kind:"+skind+" Name:"+Name+" Id:"+Id+" Email:"+Email+" P_no:"+P_no+" Demerits:"+Demerit);
 	}
 
 }

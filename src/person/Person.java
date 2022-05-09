@@ -1,15 +1,21 @@
 package person;
 
-import java.util.Scanner;
-
-public class Person {
+public abstract class Person {
 	protected PersonKind Kind=PersonKind.Adult;
     protected String Name;
 	protected int Id;
 	protected String Email;
 	protected String P_no;
-	public int Demerit;
+	protected int Demerit;
 	
+	public int getDemerit() {
+		return Demerit;
+	}
+
+	public void setDemerit(int demerit) {
+		Demerit = demerit;
+	}
+
 	public Person() {
 		
 	}
@@ -80,38 +86,6 @@ public class Person {
 		P_no = p_no;
 	}
 	
-	public void printInfo() {
-		String skind="none";
-		switch(this.Kind) {
-		case Adult:
-			skind="Adult";
-			break;
-		case Teenager:
-			skind="Teen";
-			break;
-		case Children:
-			skind="Child";
-			break;
-		default:
-		}
-		System.out.println("Kind:"+skind+" Name:"+Name+" Id:"+Id+" Email:"+Email+" P_no:"+P_no+" Demerits:"+Demerit);
-	}
-	
-	public void getUserInput(Scanner input) {
-		System.out.print("Person's Id:");
-		int Id=input.nextInt();
-		this.setId(Id);
-		System.out.print("Person's Name:");
-		String Name=input.next();
-		this.setName(Name);
-		System.out.print("Person's P_no:");
-		String P_no=input.next();
-		this.setP_no(P_no);
-		System.out.print("Person's Email:");
-		String Email=input.next();
-		this.setEmail(Email);
-		this.Demerit=-1;
-		
-	}
+	public abstract void printInfo();
 
 }
