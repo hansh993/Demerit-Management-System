@@ -1,6 +1,8 @@
 package person;
 
-public abstract class Person {
+import java.util.Scanner;
+
+public abstract class Person implements PersonInput {
 	protected PersonKind Kind=PersonKind.Adult;
     protected String Name;
 	protected int Id;
@@ -87,5 +89,46 @@ public abstract class Person {
 	}
 	
 	public abstract void printInfo();
+	
+	public void setPersonID(Scanner input) {
+		System.out.print("Person's Id:");
+		int Id=input.nextInt();
+		this.setId(Id);
+	}
+	
+	public void setPersonName(Scanner input) {
+		System.out.print("Person's Name:");
+		String Name=input.next();
+		this.setName(Name);
+	}
+	
+	public void setPersonP_no(Scanner input) {
+		System.out.print("Person's P_no:");
+		String P_no=input.next();
+		this.setP_no(P_no);
+	}
+	
+	public void setPersonEmail(Scanner input) {
+		System.out.print("Person's Email:");
+		String Email=input.next();
+		this.setEmail(Email);
+	}
+	
+	public String getKindString() {
+		String skind="none";
+		switch(this.Kind) {
+		case Adult:
+			skind="Adult";
+			break;
+		case Teenager:
+			skind="Teen";
+			break;
+		case Children:
+			skind="Child";
+			break;
+		default:
+		}
+	return skind;	
+	}
 
 }

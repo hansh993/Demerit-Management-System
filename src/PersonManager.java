@@ -50,6 +50,11 @@ public class PersonManager {
 	public void deletePerson() {
 		System.out.print("Person's Id:");
 		int personId=input.nextInt();
+		int index=findIndex(personId);
+		removefromPeople(index, personId);
+	}
+	
+	public int findIndex(int personId) {
 		int index=-1;
 		for(int i=0;i<people.size();i++) {
 			if(people.get(i).getId()==personId) {
@@ -57,16 +62,22 @@ public class PersonManager {
 				break;
 			}
 		}
+		return index;
+	}
+	
+	public int removefromPeople(int index, int personId) {
 		if(index>0) {
 			people.remove(index);
 			System.out.println("the person "+personId+ " is deleted");
+			return 1;
 		}
 		else {
 			System.out.println("the person has not been registered");
-			return;
+			return -1;
 		}
 	}
-    public void deductPoints() {
+    
+	public void deductPoints() {
     	System.out.print("Person's Id:");
 		int personId=input.nextInt();
 		for(int i=0;i<people.size();i++) {
