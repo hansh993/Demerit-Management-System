@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import person.Adult;
@@ -19,31 +20,40 @@ public class PersonManager {
 		int kind=0;
 		PersonInput personInput;
 		while(kind!=1&&kind!=2&&kind!=3) {
-			System.out.println("1 for Adult");
-			System.out.println("2 for Teenager");
-			System.out.println("3 for Children");
-			System.out.print("Select num for People Kind between 1 and 3:");
-			kind=input.nextInt();
-			if(kind==1) {
-				personInput=new Adult(PersonKind.Adult);
-				personInput.getUserInput(input);
-				people.add(personInput);
-				break;
+			try {
+				System.out.println("1 for Adult");
+				System.out.println("2 for Teenager");
+				System.out.println("3 for Children");
+				System.out.print("Select num for People Kind between 1 and 3:");
+				kind=input.nextInt();
+				if(kind==1) {
+					personInput=new Adult(PersonKind.Adult);
+					personInput.getUserInput(input);
+					people.add(personInput);
+					break;
+				}
+				else if(kind==2) {
+					personInput=new TeenagerPerson(PersonKind.Teenager);
+					personInput.getUserInput(input);
+					people.add(personInput);
+					break;
+				}
+				else if(kind==3) {
+					personInput=new Children(PersonKind.Children);
+					personInput.getUserInput(input);
+					people.add(personInput);
+					break;
+				}
+				else {
+					System.out.print("Select num for People Kind between 1 and 2:");
+				}
 			}
-			else if(kind==2) {
-				personInput=new TeenagerPerson(PersonKind.Teenager);
-				personInput.getUserInput(input);
-				people.add(personInput);
-				break;
-			}
-			else if(kind==3) {
-				personInput=new Children(PersonKind.Children);
-				personInput.getUserInput(input);
-				people.add(personInput);
-				break;
-			}
-			else {
-				System.out.print("Select num for People Kind between 1 and 2:");
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 3!");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind=-1;
 			}
 		}
 	}

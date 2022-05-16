@@ -2,6 +2,8 @@ package person;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public abstract class Person implements PersonInput {
 	protected PersonKind Kind=PersonKind.Adult;
     protected String Name;
@@ -76,7 +78,11 @@ public abstract class Person implements PersonInput {
 		return Email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException {
+		if(!email.contains("@") && !email.equals("")) {
+			throw new EmailFormatException();
+		}
+		
 		Email = email;
 	}
 
@@ -109,9 +115,17 @@ public abstract class Person implements PersonInput {
 	}
 	
 	public void setPersonEmail(Scanner input) {
-		System.out.print("Person's Email:");
-		String Email=input.next();
-		this.setEmail(Email);
+		String email="";
+		while(!email.contains("@")) {
+			System.out.print("Person's Email:");
+			email=input.next();
+			try{
+				this.setEmail(email);
+			}
+			catch(EmailFormatException e) {
+				System.out.println("Incorrect Email Format. Put the email address that contains @!");
+			}
+		}
 	}
 	
 	public String getKindString() {
