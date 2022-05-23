@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,9 +10,13 @@ import person.PersonInput;
 import person.PersonKind;
 import person.TeenagerPerson;
 
-public class PersonManager {
+public class PersonManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5477063569447317899L;
 	ArrayList<PersonInput> people= new ArrayList<PersonInput>();
-	Scanner input;
+	transient Scanner input;
 	PersonManager(Scanner input){
 		this.input=input;
 	}
