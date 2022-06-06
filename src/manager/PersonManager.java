@@ -1,3 +1,4 @@
+package manager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,6 +7,7 @@ import java.util.Scanner;
 
 import person.Adult;
 import person.Children;
+import person.Person;
 import person.PersonInput;
 import person.PersonKind;
 import person.TeenagerPerson;
@@ -108,6 +110,14 @@ public class PersonManager implements Serializable {
     	for(int i=0;i<people.size();i++) {
 			people.get(i).printInfo();
 		}
-    }	
+    }
+    
+    public int size() {
+    	return people.size();
+    }
+    
+    public PersonInput get(int index) {
+    	return (Person) people.get(index);
+    }
 
 }

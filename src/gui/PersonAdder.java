@@ -7,8 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class PersonAdder extends JFrame {
-	public PersonAdder() {
+public class PersonAdder extends JPanel {
+	WindowFrame frame;
+	
+	public PersonAdder(WindowFrame frame) {
+		this.frame=frame;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -40,10 +44,8 @@ public class PersonAdder extends JFrame {
 		panel.add(new JButton("cancel"));
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
-		
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setContentPane(panel);
+
+		this.add(panel);
 		this.setVisible(true);
 		
 		
