@@ -18,7 +18,7 @@ public class WindowFrame extends JFrame {
 		
 		this.personmanager = personmanager; 
 		this.menuselection = new MenuSelection(this);
-		this.personadder = new PersonAdder(this);
+		this.personadder = new PersonAdder(this, this.personmanager);
 		this.demeritviewer = new DemeritViewer(this, this.personmanager);
 		
 		this.add(menuselection);

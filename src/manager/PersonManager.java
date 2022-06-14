@@ -23,6 +23,16 @@ public class PersonManager implements Serializable {
 		this.input=input;
 	}
 	
+	public void addPerson(String id, String name, String email, String p_no) {
+		PersonInput personInput=new Adult(PersonKind.Adult);
+		personInput.getUserInput(input);
+		people.add(personInput);
+	}
+	
+	public void addPerson(PersonInput personInput) {
+		people.add(personInput);
+	}
+	
 	public void addPerson() {
 		int kind=0;
 		PersonInput personInput;

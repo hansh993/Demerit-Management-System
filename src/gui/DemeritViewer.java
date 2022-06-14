@@ -15,6 +15,38 @@ public class DemeritViewer extends JPanel {
 	WindowFrame frame;
 	PersonManager personmanager;
 	
+	public PersonManager getPersonmanager() {
+		return personmanager;
+	}
+
+	public void setPersonmanager(PersonManager personmanager) {
+		this.personmanager = personmanager;
+		this.removeAll();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("ID");
+		model.addColumn("Name");
+		model.addColumn("Email");
+		model.addColumn("Demerit");
+		model.addColumn("Contact Info.");
+		
+		for(int i=0; i<personmanager.size(); i++) {
+			Vector row = new Vector();
+			PersonInput pi = personmanager.get(i);
+			row.add(pi.getId());
+			row.add(pi.getName());
+			row.add(pi.getEmail());
+			row.add(pi.getDemerit());
+			row.add(pi.getP_no());
+			model.addRow(row);
+		}
+		
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		
+		this.add(sp);
+	}
+
 	public DemeritViewer(WindowFrame frame, PersonManager personmanager) {
 		this.frame=frame;
 		this.personmanager = personmanager;
@@ -33,8 +65,8 @@ public class DemeritViewer extends JPanel {
 			PersonInput pi = personmanager.get(i);
 			row.add(pi.getId());
 			row.add(pi.getName());
-			row.add(pi.getDemerit());
 			row.add(pi.getEmail());
+			row.add(pi.getDemerit());
 			row.add(pi.getP_no());
 			model.addRow(row);
 		}
